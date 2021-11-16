@@ -1,0 +1,22 @@
+<!--pages/component/good-list-grid-1/good-list-grid-1.wxml-->
+<view class="cu-card article margin-top-xs  margin-bottom-df" style="margin-bottom:30rpx;">
+    <view class="cu-item  padding-top-xs" style="margin:10rpx;" wx:for="{{3}}">
+      <view class="content margin-top-sm" >
+        <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
+        <view class="desc" style="overflow: hidden;">
+          <view class="text-bold">
+            <view class="text-left text-left text-cut"> 折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！真正的恩典因不完整而美丽，因情感而真诚，因脆弱而自由！</view>
+          </view>
+          <view  class="text-gray">
+            <text class="" wx:for="{{3}}">{{index==0?'':'/'}}面积</text>
+          </view>
+          
+          <view class=" text-price text-red text-xxl">80.00</view>
+          <view>
+            <view wx:for="{{4}}" class="cu-tag bg-green light sm round">学校</view>
+            <!-- <view class="cu-tag bg-green light sm round">史诗</view> -->
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>

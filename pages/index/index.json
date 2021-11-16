@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "component-swiper":"../../component/swiper/swiper",
+    "component-list-grid-2":"../../component/good-list-grid-2/good-list-grid-2",
+    "i-notice-bar": "../../dist/notice-bar/index",
+    "component-good-bar":"../../component/good-bar/good-bar"
+  }
+}

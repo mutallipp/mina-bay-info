@@ -1,0 +1,7 @@
+<!--pages/msg/msg.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="true">
+  <view slot="content">消息</view>
+  <view slot="backText">返回</view>
+  
+</cu-custom>
+<text>pages/msg/msg.wxml</text>

@@ -1,0 +1,7 @@
+<!--pages/like/like.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="true">
+  <view slot="content">收藏</view>
+  <view slot="backText">返回</view>
+  
+</cu-custom>
+<component-good-list-1></component-good-list-1>

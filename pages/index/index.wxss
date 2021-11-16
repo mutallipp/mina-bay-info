@@ -1,0 +1,18 @@
+.box {  
+  margin: 20rpx 0; 
+}
+
+.box view.cu-bar {
+  margin-top: 20rpx; 
+  
+}
+.cu-card.dynamic>.cu-item>.title{
+  font-size: 20rpx;
+  padding: 0 0 0;
+  
+}
+.cu-card>.good-item{
+  margin: 0;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+}

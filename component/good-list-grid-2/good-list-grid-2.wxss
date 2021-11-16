@@ -1,0 +1,12 @@
+/* pages/component/goog-list-grid-2/good-list-grid-2.wxss */
+
+.cu-card.dynamic>.cu-item>.title{
+  font-size: 20rpx;
+  padding: 0 0 0;
+  
+}
+.cu-card>.good-item{
+  margin: 0;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+}

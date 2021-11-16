@@ -1,0 +1,42 @@
+<!--pages/aboutUser/aboutUser.wxml-->
+<import src="../template/scroll-good/scroll-good.wxml"/>
+<cu-custom bgColor="bg-gradual-purple" isBack="true">
+  <view slot="content">详情页</view>
+  <view slot="backText">返回</view>
+  
+</cu-custom>
+<!-- 头像 -->
+<component-avatar bgColor="blue"></component-avatar>
+
+<view class="cu-card dynamic bg-white radius margin" style="position:fixed; top:230px; width:90%;">
+  <view class="cu-list flex justify-between text-black    padding" >
+    <view class="cu-chat ">
+      <text>权限</text>
+      <text>VIP</text>
+    </view>
+    <view class="cu-chat">
+      <text>信息</text>
+      <text>125</text>
+    </view>
+    <view class="cu-chat">
+      <text>身份</text>
+      <text>已认证</text>
+    </view>
+  </view>
+  <!-- 关注 -->
+  <view class="flex justify-between padding">
+    <view class="margin-top-sm">
+      <text class="text-gray" >关注10</text>
+      <text class="text-gray margin-left-sm">粉丝10</text>
+    </view>
+    <view class="bg-red padding-sm padding-lr">
+      <view class="flex-wrap">+关注</view>
+    </view>
+     
+  </view>
+</view>
+
+<view class="list">
+  <component-good-list-1></component-good-list-1>
+</view>
+

@@ -1,0 +1,35 @@
+/* pages/detail/detail.wxss */
+
+.continer{
+height: 100%;
+width: 100%;
+}
+.swiper{
+  margin: 5rpx;
+}
+
+.conten{
+  margin: 20rpx;
+  display: flex;
+  flex-direction: column;
+  /* padding-left: 20rpx;
+  padding-right: 20rpx; */
+  
+}
+.title{
+  /* text-align: center; */
+
+  font-size: 18px;
+  background-color: white;
+
+}
+.price-watch{
+  margin-top: 20rpx;
+  background-color: white;
+  flex-direction: row;
+}
+.list-titile{
+  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

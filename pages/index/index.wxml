@@ -1,0 +1,76 @@
+<import src='/pages/template/top/top.wxml' />
+<cu-custom bgColor="bg-gradual-purple"  isBack="true">
+  <view slot="content">首页</view>
+  <view slot="backText">返回</view>
+  
+</cu-custom>
+
+<!-- 搜索框 -->
+<view class="cu-bar search bg-white fixed" style="top:{{CustomBar}}px;">
+    <view class="search-form round">
+      <text class="cuIcon-search"></text>
+      <input type="text-center" placeholder="搜索图片、文章、视频" confirm-type="search"></input>
+    </view>
+    <view class="action">
+      <button class="cu-btn bg-green shadow-blur round">搜索</button>
+    </view>
+  </view>
+
+
+<!-- <view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px;">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="输入搜索的关键词" confirm-type="search"></input>
+  </view>
+  <view class="action">
+    <button class="cu-btn bg-gradual-green shadow-blur round">搜索</button>
+  </view>
+</view> -->
+
+
+<view class="cu-bar bg-white" style="top:{{CustomBar-30}}px;"></view>
+
+<!-- 轮播图 -->
+<view class="box">
+  <component-swiper id="swiper"  ></component-swiper>
+
+</view>
+
+<!-- icon列表 -->
+<component-good-bar></component-good-bar>
+<!-- 通知栏 -->
+<i-notice-bar icon="systemprompt" loop>
+    2018年世界杯,将于6月14日至7月15日举行;2018年世界杯,将于6月14日至7月15日举行;
+</i-notice-bar>
+<!-- 中间bar -->
+<scroll-view scroll-x class="bg-white nav">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{index==TabCur?'text-pink cur':''}}" wx:for="{{tabList}}" wx:key wx:item="man" bindtap="tabSelect" data-id="{{index}}">
+      {{item}}
+    </view>
+  </view>
+</scroll-view>
+
+<!-- 列表 -->
+<view class="bg-white">
+  <!-- <component-list-grid-2></component-list-grid-2> -->
+  <template is="list" data="{{bgImg:bgImg}}" />
+</view>
+
+
+
+
+<!-- <view class="margin-xl padding-xl bg-white radius shadow shadow-lg">
+  <view class="flex justify-center">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='cu-btn round bg-green shadow'> 获取头像昵称 </button>
+    <block wx:else>
+      <view class='text-center'>
+        <view class="cu-avatar xl round solids" style="background-image:url({{userInfo.avatarUrl}})"></view>
+        <view class="padding">{{userInfo.nickName}}</view>
+      </view>
+    </block>
+  </view>
+</view>
+<view class="text-center margin-top">
+  <text class="text-grey text-xl">{{motto}}</text>
+</view> -->

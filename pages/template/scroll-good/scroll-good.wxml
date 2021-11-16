@@ -1,0 +1,12 @@
+
+<template name="scroll-good">
+  <scroll-view scroll-x="true" >
+    <view class="bg-white" style="width: 100%;height: 280rpx;text-align: center;display: flex; ">
+    <!-- <view class="grid col-4 grid-square"> -->
+      <view wx:for="{{5}}" style="padding:15rpx;" bindtap="chickGood" data-index="{{index}}">
+        <image style=" width: 200rpx;height: 200rpx;" src="https://ossweb-img.qq.com/images/lol/web201310/skin/big1000{{index+1}}.jpg"></image>
+        <text class="text-blac text-cut">第{{index+1}}个</text>
+      </view>
+  </view>
+  </scroll-view>
+</template>

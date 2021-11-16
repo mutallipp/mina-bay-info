@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "component-swiper":"../../component/swiper/swiper",
+    "component-list-grid-1":"../../component/good-list-grid-1/good-list-grid-1",
+    "component-comment":"../../component/comment/comment",
+    "component-tabbar":"../../component/tabbaer/tabbar"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/updata/updata",
+    "pages/me/me",
+   
+    "pages/aboutUser/aboutUser",
+    "pages/detail/detail",
+    
+    "pages/like/like",
+    "pages/msg/msg",
+    "pages/updata/updataDetail/updataDetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "ColorUI",
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "white",
+    "selectedColor": "white",
+    "backgroundColor": "white",
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "image/tabbar-icon/home.png",
+        "selectedIconPath": "image/tabbar-icon/unhome.png"
+      },
+      {
+        "pagePath": "pages/like/like",
+        "text": "收藏",
+        "iconPath": "image/tabbar-icon/like.png",
+        "selectedIconPath": "image/tabbar-icon/unlike.png"
+      },
+      {
+        "pagePath": "pages/updata/updata",
+        "text": "上传",
+        "iconPath": "image/tabbar-icon/updata.png",
+        "selectedIconPath": "image/tabbar-icon/unupdata.png"
+      },
+      {
+        "pagePath": "pages/msg/msg",
+        "text": "消息",
+        "iconPath": "image/tabbar-icon/chat.png",
+        "selectedIconPath": "image/tabbar-icon/unchat.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "image/tabbar-icon/me.png",
+        "selectedIconPath": "image/tabbar-icon/unme.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "sitemapLocation": "sitemap.json"
+}

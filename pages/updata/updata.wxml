@@ -1,0 +1,19 @@
+<!--pages/updata/updata.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="true">
+  <view slot="content">发布信息</view>
+  <view slot="backText">返回</view>
+</cu-custom>
+
+<component-good-bar></component-good-bar>
+
+<view class="cu-list grid col-3  padding-lr ">
+  <view class="cu-item " style="height:200px;" wx:for="{{5}}">
+    <image class="padding" style="height:200px;width:200px;" src="https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg"></image>
+    <view class="padding text-balck">sfsfs</view>
+  </view>
+</view>
+
+
+<view>
+  <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg"></image>
+</view>

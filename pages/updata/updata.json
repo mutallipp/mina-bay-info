@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "component-good-bar":"../../component/good-bar/good-bar"
+  }
+}

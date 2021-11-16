@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "component-avatar":"../../component/avatar/avatar",
+    "component-good-list-1":"../../component/good-list-grid-1/good-list-grid-1"
+  }
+}
