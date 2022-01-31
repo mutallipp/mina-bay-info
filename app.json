@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/updata/updata",
     "pages/me/me",
-   
+    "pages/updata/updata",
+
     "pages/aboutUser/aboutUser",
     "pages/detail/detail",
     

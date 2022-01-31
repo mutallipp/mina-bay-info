@@ -26,14 +26,24 @@
   </view> -->
 
 <view class="cu-list bg-{{bgColor}}"  style="height:400rpx; ">
-  <view class="cu-item flex padding-top">
+  <!-- <view  wx:if="{{!hasUserInfo && canIUse}}" class="text-center padding-top-lg">
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='cu-btn round bg-green shadow'> 获取头像昵称 </button>
+  </view> -->
+  <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='cu-btn round bg-green shadow'> 获取头像昵称 </button>
+  
+  <view wx:else class="cu-item flex padding-top">
     <view class="flex-sub ">
-      <view class="cu-avatar round xl margin " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);"></view>
+      <!-- <view class="cu-avatar round xl margin " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);"></view> -->
+      <view class="round margin" style="overflow: hidden;">
+        <open-data  type="userAvatarUrl"></open-data>
+      </view>
+      
     </view>
     
     <view class="cu-chat  justify-center flex-treble">
-      <text class="text-xl">阳光房地产</text>
-      <text class="margin-top-xs">艾力</text>
+      <text class="text-xl">测试</text>
+      <!-- <text class="margin-top-xs">{{userInfo.nickName}}</text> -->
+      <open-data type="userNickName"></open-data>
     </view>
     <view wx:if="{{who}}" class="flex-sub flex align-start" >
       <view class="padding margin-left flex ">
