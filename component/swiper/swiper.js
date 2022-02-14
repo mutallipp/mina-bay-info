@@ -28,11 +28,12 @@ Component({
       })
     },
     picPicter:function(e){
-      let t=this,swiperList=t.data.swiperList
+      const { index } = e.currentTarget.dataset
+      let t=this,swiperList=t.properties.swiperList
       
       wx.previewImage({
-        urls: swiperList.map(ittem=>ittem.url),
-        current: t.data.swiperList[e.currentTarget.dataset.index].url // 当前显示图片的http链接      
+        urls: swiperList.map(ittem=>ittem.imgUrl),
+        current: swiperList[index].imgUrl // 当前显示图片的http链接      
       })
     },
     showImage(e) {

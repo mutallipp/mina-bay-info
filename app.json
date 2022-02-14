@@ -1,15 +1,16 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/me/me",
+    "pages/updata/updataDetail/updataDetail",
+    
     "pages/updata/updata",
-
+    
+    "pages/me/me",
     "pages/aboutUser/aboutUser",
     "pages/detail/detail",
-    
     "pages/like/like",
-    "pages/msg/msg",
-    "pages/updata/updataDetail/updataDetail"
+    "pages/msg/msg"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

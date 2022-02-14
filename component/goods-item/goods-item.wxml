@@ -1,0 +1,32 @@
+<!--component/goods-item/goods-item.wxml-->
+<view class="cu-card">
+  <view class="cu-item shadow margin-top" style="margin-bottom: 0px;">
+<!-- header -->
+    <goods-item-header goods="{{goods}}"/>
+    <view bindtap="clickGoods">
+      <view class="margin">
+        <view class="text-content ">
+          {{goods.title}}
+        </view>
+        <view class="text-content">
+          {{goods.description}}
+        </view>
+      </view>
+
+      <view class="grid flex-sub padding-lr col-3 grid-square">
+        <view class="bg-img" style="background-image:url({{item.imgUrl}});" wx:for="{{goods.productImgs}}" wx:key="{{item}}">
+        </view>
+      </view>
+  </view>
+    <view class="flex justify-between padding text-gray text-sm">
+      <view class="">{{goods.lastEditTime}}</view>
+      <view class="text-gray text-sm">
+      <!-- 浏览数 -->
+        <text class="cuIcon-attentionfill margin-lr-xs"></text> {{goods.visitCount}}
+        <text class="cuIcon-appreciatefill margin-lr-xs"></text> {{goods.visitCount}}
+        <text class="cuIcon-messagefill margin-lr-xs"></text> {{goods.commentCount}}
+      </view>
+    </view>
+  </view>
+</view>
+

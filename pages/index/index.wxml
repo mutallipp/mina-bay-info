@@ -6,55 +6,37 @@
 </cu-custom>
 
 <!-- 搜索框 -->
-<view class="cu-bar search bg-white fixed" style="top:{{CustomBar}}px;">
-    <view class="search-form round">
-      <text class="cuIcon-search"></text>
-      <input type="text-center" placeholder="搜索图片、文章、视频" confirm-type="search"></input>
-    </view>
-    <view class="action">
-      <button class="cu-btn bg-green shadow-blur round">搜索</button>
-    </view>
-  </view>
-
-
-<!-- <view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px;">
-  <view class="search-form round">
-    <text class="cuIcon-search"></text>
-    <input type="text" placeholder="输入搜索的关键词" confirm-type="search"></input>
-  </view>
-  <view class="action">
-    <button class="cu-btn bg-gradual-green shadow-blur round">搜索</button>
-  </view>
-</view> -->
-
-
-<view class="cu-bar bg-white" style="top:{{CustomBar-30}}px;"></view>
+<search />
 
 <!-- 轮播图 -->
-<view class="box">
-  <component-swiper id="swiper"  ></component-swiper>
+<view class="margin">
+  <component-swiper id="swiper" swiperList="{{swiperList}}" />
 
 </view>
 
 <!-- icon列表 -->
-<component-good-bar></component-good-bar>
+<component-good-bar goodBarData="{{goodBarData}}" />
 <!-- 通知栏 -->
-<i-notice-bar icon="systemprompt" loop>
-    2018年世界杯,将于6月14日至7月15日举行;2018年世界杯,将于6月14日至7月15日举行;
+<view class="margin-top ">
+  <i-notice-bar icon="systemprompt" loop>
+    欢迎来到拜城信息网～～～～～
 </i-notice-bar>
+</view>
+
 <!-- 中间bar -->
-<scroll-view scroll-x class="bg-white nav">
+<!-- <scroll-view scroll-x class="bg-white nav">
   <view class="flex text-center">
     <view class="cu-item flex-sub {{index==TabCur?'text-pink cur':''}}" wx:for="{{tabList}}" wx:key wx:item="man" bindtap="tabSelect" data-id="{{index}}">
       {{item}}
     </view>
   </view>
-</scroll-view>
+</scroll-view> -->
 
 <!-- 列表 -->
-<view class="bg-white">
-  <!-- <component-list-grid-2></component-list-grid-2> -->
-  <template is="list" data="{{bgImg:bgImg}}" />
+<view class="">
+  <block wx:for="{{goodsList}}">
+    <good-item goods="{{item}}"/>
+  </block>
 </view>
 
 

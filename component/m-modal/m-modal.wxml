@@ -1,0 +1,14 @@
+<view class="cu-modal {{modalName=='RadioModal'?'show':''}}">
+  <view class="cu-dialog" catchtap>
+    <radio-group class="block">
+      <view class="cu-list menu text-left">
+        <view class="cu-item" wx:for="{{radioModalData}}" wx:key >
+          <label class="flex justify-between align-center flex-sub"  bindtap="hideModal" data-index="{{index}}" >
+            <view class="flex-sub">{{item.name}}</view>
+            <radio class="round"></radio>
+          </label>
+        </view>
+      </view>
+    </radio-group>
+  </view>
+</view>

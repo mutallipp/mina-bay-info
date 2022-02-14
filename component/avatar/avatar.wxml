@@ -41,12 +41,12 @@
     </view>
     
     <view class="cu-chat  justify-center flex-treble">
-      <text class="text-xl">测试</text>
+      <!-- <text class="text-xl">测试</text> -->
       <!-- <text class="margin-top-xs">{{userInfo.nickName}}</text> -->
       <open-data type="userNickName"></open-data>
     </view>
     <view wx:if="{{who}}" class="flex-sub flex align-start" >
-      <view class="padding margin-left flex ">
+      <view class="padding margin-left flex" bindtap="setting">
         <view class="cuIcon-settings  text-xs text-white"></view>
         <!-- <text class="bg-white text-xs text-blue ">实名认证</text> -->
       </view>

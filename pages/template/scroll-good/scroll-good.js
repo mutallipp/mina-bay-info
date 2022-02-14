@@ -1,5 +1,5 @@
 const app=getApp();
-var temp = {
+const temp = {
   chickGood: function (e) {
     app.logger(e.currentTarget.dataset.index)
   }

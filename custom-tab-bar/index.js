@@ -7,38 +7,7 @@ Component({
     // selectedColor: "#3cc51f",
     "selectedColor": "blue",
     // "backgrodColor": "#4169E1",
-    taBarList:[
-      {
-        "pagePath": "/pages/index/index",
-        "text": "首页",
-        "iconPath": "/image/tabbar-icon/unhome.png",
-        "selectedIconPath": "/image/tabbar-icon/home.png"
-      },
-      {
-        "pagePath": "/pages/like/like",
-        "text": "收藏",
-        "iconPath": "/image/tabbar-icon/unlike.png",
-        "selectedIconPath": "/image/tabbar-icon/like.png"
-      },
-      {
-        "pagePath": "/pages/updata/updata",
-        "text": "上传",
-        "iconPath": "/image/tabbar-icon/unupdata.png",
-        "selectedIconPath": "/image/tabbar-icon/updata.png"
-      },
-      {
-        "pagePath": "/pages/msg/msg",
-        "text": "消息",
-        "iconPath": "/image/tabbar-icon/unchat.png",
-        "selectedIconPath": "/image/tabbar-icon/chat.png"
-      },
-      {
-        "pagePath": "/pages/me/me",
-        "text": "我的",
-        "iconPath": "/image/tabbar-icon/unme.png",
-        "selectedIconPath": "/image/tabbar-icon/me.png"
-      }
-    ],
+    taBarList:app.globalData.taBarList
   },
    
  
@@ -67,7 +36,7 @@ Component({
       wx.switchTab({
         url: path,
       })
-      app.logger(data.index)
+      console.log(data.index)
       // t.setData({
       //   selected: data.index
       // })

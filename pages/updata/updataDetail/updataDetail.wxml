@@ -4,47 +4,27 @@
   <view slot="backText">返回</view>
 </cu-custom>
 
-<form>
+<form catchsubmit="formSubmit">
 	<view class="cu-form-group margin-top-xs">
 		<view class="title">标题</view>
-		<input placeholder="请输入标题"></input>
+		<input name="title" placeholder="请输入标题"></input>
 	</view>
-	<view class="cu-form-group">
-		<view class="title">总价格￥</view>
-		<input placeholder="请输入总价格"></input>
+  <view class="cu-form-group margin-top-xs">
+		<view class="title">联系人</view>
+		<input name="contact" placeholder="请输入标题"></input>
 	</view>
-
-	<!-- 选择类型 -->
-	<view class="cu-form-group">
-		<view class="title">请选择商品的类型</view>
-		<picker mode="multiSelector" bindchange="MultiChange" bindcolumnchange="MultiColumnChange" value="{{multiIndex}}"
-		 range="{{multiArray}}">
-			<view class="picker">
-				{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}
+  <!-- 手机号 -->
+  <view class="cu-form-group">
+		<view class="title">手机号码</view>
+		<input name="phone" placeholder="手机号"></input>
+		<view class="cu-capsule radius">
+			<view class="cu-tag bg-blue">
+				+86
 			</view>
-		</picker>
-	</view>
-	<!-- 大小 -->
-	<view class="cu-form-group">
-		<view class="title">大小（单位平方）</view>
-		<input model:value="{{hoseSize}}" placeholder="请输入总大小" value="{{hoseSize}}"></input>
-	</view>
-	<!-- 结构 -->
-	<view class="cu-form-group">
-		<view class="title">请选择商品的类型</view>
-		<picker mode="multiSelector" bindchange="choiceStructureBind" bindcolumnchange="choiceStructureColumn" value="{{multiIndex}}"
-		 range="{{scructureArray}}">
-			<view class="picker">
-				{{scructureArray[0][scructureIndex[0]]}}，{{scructureArray[1][scructureIndex[1]]}}，{{scructureArray[2][scructureIndex[2]]}}
+			<view class="cu-tag line-blue">
+				中国大陆
 			</view>
-		</picker>
-	</view>
-	<view class="cu-form-group margin-top-xs flex justify-start">
-		<view class="title">层数</view>
-			<input class="padding-lr-lg" placeholder="请输入现在的层数"></input>
-			<view class="text-center">总楼层数</view>
-			<input class="padding-lr-lg" placeholder="请输入总楼层数"></input>
-		
+		</view>
 	</view>
 
 	<!-- 上传图片 -->
@@ -71,21 +51,19 @@
 	</view>
 	<!-- 内容 -->
 	<view class="cu-form-group margin-top-xs">
-		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="请输入内容"></textarea>
+		<textarea name="content" maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="请输入内容"></textarea>
 	</view>
 	<!-- 标签 -->
 	<view class="cu-form-group flex">
 		<view class="padding-sx flex flex-wrap">
-			<view class="padding-xs" wx:for="{{ColorList}}" wx:key  wx:if="{{item.name!='gray' && item.name!='black' && item.name!='white'}}" bindtap="changeTab" data-index="{{index}}">
-				<view class="cu-tag bg-{{item.name}} {{item.checked==false?'light':''}}  round">{{item.title}}</view>
+			<view class="padding-xs" wx:for="{{ColorList}}" wx:key bindtap="changeTab" data-index="{{index}}">
+				<view class="cu-tag bg-{{item.bgColor}} {{item.checked==false?'light':''}}  round">{{item.name}}</view>
 			</view>
-  		<!-- <view class="padding-xs" wx:for="{{ColorList}}" wx:key  wx:if="{{item.name!='gray' && item.name!='black' && item.name!='white'}}">
-    		<view class="cu-tag bg-{{item.name}} light">{{item.title}}</view>
-  		</view> -->
  	 </view>
-	
 	</view>
-
-
-
+  <view class="padding flex flex-direction">
+  <button formType="submit" class="cu-btn bg-blue margin-tb-sm lg">保存</button>
+</view>
 </form>
+
+

@@ -1,7 +1,7 @@
 
 
-<view class="cu-list grid col-4 {{gridBorder?'':'no-border'}}">
-  <view bindtap="clickTab" class="cu-item" wx:for="{{iconList}}" wx:key wx:if="{{index<gridCol*2}}">
+<view class="cu-list grid col-{{gridCol}} {{gridBorder?'':'no-border'}}">
+  <view bindtap="clickTab" class="cu-item" wx:for="{{goodBarData}}" wx:key wx:if="{{index<gridCol*2}}" data-sourse="{{item}}">
     <view class="cuIcon-{{item.icon}} text-{{item.color}}"></view>
     <view class="text-black">{{item.name}}</view>
   </view>

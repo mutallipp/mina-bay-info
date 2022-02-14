@@ -8,8 +8,8 @@
 </cu-custom>
 
 <view class="continer">
-  <view class="swiper padding-xs">
-    <component-swiper id="component-swiper" swiperList="{{swiperList}}"></component-swiper>
+  <view wx:if="{{goods.productImgs&&goods.productImgs.length>1}}" class="swiper padding-xs">
+    <component-swiper id="component-swiper" swiperList="{{goods.productImgs}}"></component-swiper>
   </view>
   <!-- <view class="conten">
     <view class="title">标题</view>
@@ -23,16 +23,16 @@
   <view class="padding-top-xs text-left">
     <view class="padding-xs-lr bg-white">
       <view class="solid-bottom padding">
-        <view class="text">价格文本，利用伪元素添加"¥"符号</view>
+        <view class="text">{{goods.title}}</view>
       </view>
       <view class="flex justify-between">
-        <view class="padding text-price text-red text-xxl">80.00</view>
+        <view class="padding text-time  ">{{goods.lastEditTime}}</view>
         <view class="text-right padding">175人想要 | 525次浏览</view>
       </view> 
     </view>
   </view>
   <!-- 基本内容 -->
-  <view class="cu-bar bg-white solid-bottom margin-top-xs">
+  <!-- <view class="cu-bar bg-white solid-bottom margin-top-xs">
     <view class="action">
       <text class="cuIcon-titles text-red"></text>
       <text class="text-black text-bold text-lg">基本信息</text>
@@ -45,7 +45,7 @@
         <text class="text-black text-bold">62平方</text>
       </view>
     </view>
-  </view>
+  </view> -->
 
   <!-- 优点 -->
   <view class="cu-bar bg-white solid-bottom margin-top-xs">
@@ -54,9 +54,9 @@
       <text class="text-black text-bold text-lg">优点</text>
     </view>
   </view>
-  <view class="padding-sx flex flex-wrap">
-    <view class="padding-xs" wx:for="{{ColorList}}" wx:key  wx:if="{{item.name!='gray' && item.name!='black' && item.name!='white'}}">
-      <view class="cu-tag bg-{{item.name}} light round">{{item.title}}</view>
+  <view class=" bg-white padding-sx flex flex-wrap">
+    <view class="padding-xs" wx:for="{{goods.productTags}}" wx:key >
+      <view class="cu-tag bg-{{item.bgColor}} light round">{{item.name}}</view>
     </view>
   </view>
     <!-- 详情 -->
@@ -67,17 +67,17 @@
     </view>
   </view>
   <view class="bg-white">
-    <view class="text-content  text-left padding">我于杀戮之中绽放 ,亦如黎明中发到啥地方水电费水电费暗示法算法我于杀戮之中绽放 ,亦如黎明中的花朵我于杀戮之中绽放 ,亦如黎明中的花朵算法暗示法暗示法暗示法萨芬的花朵</view>
+    <view class="text-content  text-left padding">{{goods.description}}</view>
   </view>
   <!-- 关于卖家 -->
-  <view class="cu-bar bg-white solid-bottom margin-top-xs">
+  <!-- <view class="cu-bar bg-white solid-bottom margin-top-xs">
     <view class="action">
       <text class="cuIcon-titles text-red"></text>
       <text class="text-black text-bold text-lg">关于卖家</text>
     </view>
-  </view>
+  </view> -->
   <!-- 头像 -->
-  <view class="cu-card dynamic {{isCard?'no-card':''}}">
+  <!-- <view class="cu-card dynamic {{isCard?'no-card':''}}">
   <view class="cu-item shadow" style="margin-top:10rpx; margin-bottom:0;">
     <view class="cu-list menu-avatar">
       <view class="cu-item" bindtap="aboutUser">
@@ -101,17 +101,17 @@
       </view>
     </view>
     
-  </view>
+  </view> -->
   <!-- 近期发布的信息 -->
-  <view class="cu-bar bg-white solid-bottom margin-top-xs">
+  <!-- <view class="cu-bar bg-white solid-bottom margin-top-xs">
     <view class="action">
       <text class="cuIcon-titles text-red"></text>
       <text class="text-black text-bold text-lg">近期发布的信息</text>
     </view>
-  </view>
-  <view>
+  </view> -->
+  <!-- <view>
     <template is="scroll-good" data="{{bgImg:bgImg}}"/>
-  </view>
+  </view> -->
   <!-- 相似信息 -->
   <view class="cu-bar bg-white solid-bottom margin-top-xs">
     <view class="action">
@@ -120,19 +120,23 @@
     </view>
   </view>
   <!-- 商品列表 -->
-  <component-list-grid-1></component-list-grid-1>
+<view class="">
+  <block wx:for="{{recommendList}}">
+    <good-item goods="{{item}}" />
+  </block>
+</view>
 
   <!-- 互动 -->
-  <view class="cu-bar bg-white solid-bottom margin-top-xs">
+  <!-- <view class="cu-bar bg-white solid-bottom margin-top-xs">
     <view class="action">
       <text class="cuIcon-titles text-red"></text>
       <text class="text-black text-bold text-lg">互动</text>
     </view>
   </view>
-  <component-comment></component-comment>
+  <component-comment></component-comment> -->
 
   <!-- t底部菜单 -->
 
-  <component-tabbar></component-tabbar>
+  <component-tabbar phone="{{goods.contactPhone}}" />
 
 </view>

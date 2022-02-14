@@ -7,7 +7,14 @@ Component({
     addGlobalClass:true
   },
   properties: {
-
+    from:{
+      type: String,
+      value: ''
+    },
+    goodBarData:{
+      type:Array,
+      value:[]
+    }
   },
   lifetimes:{
     attached(){
@@ -26,49 +33,59 @@ Component({
       sort:1,
       color: 'blue',
       badge: 120,
-      name: '二手车'
+      name: '二手车',
+      key:'car',
     }, {
       icon: 'babyfill',
       sort:1,
       color: 'red',
       badge: 1,
-      name: '找工作'
+      name: '找工作',
+      key:'job',
     }, {
       icon: 'home',
       sort:1,
       color: 'yellow',
       badge: 0,
-      name: '租房'
+      name: '租房',
+      key:'rent',
     }, {
       icon: 'shop',
       sort:2,
       color: 'olive',
       badge: 22,
-      name: '二手房'
-    }, {
-      icon: 'recharge',
-      sort:1,
-      color: 'cyan',
-      badge: 0,
-      name: '交易'
-    }, {
-      icon: 'footprint',
-      sort:1,
-      color: 'blue',
-      badge: 0,
-      name: '旅游'
-    }, {
-      icon: 'game',
-      sort:1,
-      color: 'purple',
-      badge: 0,
-      name: '生活'
-    }, {
+      name: '二手房',
+      key:'oldHouse',
+    }, 
+    // {
+    //   icon: 'recharge',
+    //   sort:1,
+    //   color: 'cyan',
+    //   badge: 0,
+    //   name: '交易',
+    //   key:'deal',
+    // }, {
+    //   icon: 'footprint',
+    //   sort:1,
+    //   color: 'blue',
+    //   badge: 0,
+    //   name: '旅游',
+    //   key:'travel',
+    // }, {
+    //   icon: 'game',
+    //   sort:1,
+    //   color: 'purple',
+    //   badge: 0,
+    //   name: '生活',
+    //   key:'life',
+    // }, 
+    {
       icon: 'similar',
       sort:1,
       color: 'mauve',
       badge: 0,
-      name: '更多'
+      name: '更多',
+      key:'more',
     }, 
 ],
   },
@@ -78,6 +95,8 @@ Component({
    */
   methods: {
     clickTab(e){
+      const sourse = e.currentTarget.dataset.sourse
+      this.triggerEvent('clickTab',sourse )
     }
   }
 })

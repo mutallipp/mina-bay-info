@@ -1,4 +1,6 @@
-// pages/updata/updata.js
+import {goodsSave,getTagList } from '../../../utils/api'
+import {uploadFile} from '../../../utils/net'
+const utils = require('../../../utils/util')
 const app=getApp();
 Page({
 
@@ -7,55 +9,110 @@ Page({
    */
   data: {
     index: null,
-    picker: ['二手车', '找工作', '租房','二手房','交易','旅游','生活','其他'],
-    multiArray: [
-      ['二手车', '找工作', '租房','二手房','交易','旅游','生活','其他'],
-      ['小车', '大巴车', '运输车', '跑车', '休闲车','其他']
-    ],
-    multiIndex: [0, 0],
-    scructureArray:[
-      ['1个卫生间', '2个卫生间', '3个卫生间'],
-      ['1个客厅', '2个客厅', '3个客厅', '4个客厅'],
-      ['1个卧室', '2个卧室', '3个卧室', '4个卧室']
-    ],
-    scructureIndex:[0,0,0],
     imgList: [],
+    uploadImgList:[],
+    selectTags:[],
+    categoryId:0,
+    categoryItemId:0,
     ColorList: app.globalData.ColorList,
-    hoseSize:'',
   },
-
-  MultiChange(e) {
-    // app.logger(e.detail.value)
+  onLoad: function (options) {
+    console.log('options:',options)
+    const { categoryId} = options
     this.setData({
-      multiIndex: e.detail.value
+      categoryId
+    })
+    this.__init()
+    this.getTagListData()
+  },
+  /**
+   * tag获取 getTagList
+   * @param {*} e 
+   */
+  async getTagListData(){
+    const {code ,data,msg} = await getTagList()
+    if(code !==200) return
+    const colorList = app.globalData.ColorList
+    this.setData({
+      ColorList:data.map(res =>{
+        const num=Math.floor(Math.random()*colorList.length)
+        res.checked=false;
+      return res
+      })
     })
   },
-  MultiColumnChange(e) {
-    // app.logger(e.detail)
-    let data = {
-      multiArray: this.data.multiArray,
-      multiIndex: this.data.multiIndex
-    };
-    data.multiIndex[e.detail.column] = e.detail.value;
-    switch (e.detail.column) {
-      // 第一个选择器触发
-      case 0:
-        switch (data.multiIndex[0]) {
-          // 第一个选择器选择了第一个
-          case 0:
-            data.multiArray[1] = ['小车', '大巴车', '运输车', '跑车', '休闲车','其他'];
-            // data.multiArray[2] = ['猪肉绦虫', '吸血虫'];
-            break;
-            // 选择了第二个
-          case 1:
-            data.multiArray[1] = ['服务员', '司机', '医生','保安'];
-            // data.multiArray[2] = ['鲫鱼', '带鱼'];
-            break;
-        }
-        data.multiIndex[1] = 0;
-        break;
+  /**
+   * 提交表单
+   */
+  async formSubmit(e){
+    const {title,contact,phone,content} = e.detail.value
+    const paramData = {
+      title,
+      contactName:contact,
+      contactPhone:phone,
+      description:content,
+      productImgs:this.data.uploadImgList,
+      productTags:this.data.selectTags,
+      productCategoryId:parseInt(this.data.categoryId),
     }
-    this.setData(data);
+    const validate = await this.checkParam(e.detail.value)
+    if(!validate) return
+    const {code ,msg} = await goodsSave(paramData)
+    if(code !==200) return
+    utils.toast.success('保存成功',1500)
+    setTimeout(()=>{
+      wx.switchTab({
+        url: '/pages/index/index',
+      })
+    },1500)
+
+  },
+  /**
+   * 参数验证器
+   */
+  checkParam(paramData){
+    const {title,contact,phone,content} = paramData
+    return new Promise((resolve,reject)=>{
+      if(!title){
+        utils.toast.error('请输入标题',500)
+        resolve(false)
+        return
+      }
+      if(!contact){
+        utils.toast.error('请输入联系人',500)
+        resolve(false)
+        return
+      }
+      if(!phone){
+        utils.toast.error('请输入手机号',500)
+        resolve(false)
+        return
+      }
+      if(!content){
+        utils.toast.error('请输入描述内容',500)
+        resolve(false)
+        return
+      }else{
+        resolve(true)
+      }
+      
+    })
+  },
+  // 图片上传
+  async uploadImg(tempFilePath){
+    const result = await uploadFile(tempFilePath)
+    console.log(result);
+    if(result.code !==200){
+      console.log(result.msg);
+      return
+    }
+    if (!result.data.img){
+      console.log('img无效');
+      return
+    }
+    const uploadImgList = this.data.uploadImgList
+    uploadImgList.push(result.data.img)
+    this.setData({uploadImgList:uploadImgList})
   },
   ChooseImage() {
     wx.chooseImage({
@@ -63,6 +120,9 @@ Page({
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
+        const tempFilePath = res.tempFilePaths[0]
+        // 上传图片
+        this.uploadImg(tempFilePath)
         if (this.data.imgList.length != 0) {
           this.setData({
             imgList: this.data.imgList.concat(res.tempFilePaths)
@@ -99,6 +159,10 @@ Page({
       }
     })
   },
+  /**
+   * 标签选择
+   * @param {} e 
+   */
   changeTab(e){
     
     let t=this;
@@ -108,6 +172,8 @@ Page({
     t.setData({
       ColorList:ColorList
     })
+    const select = ColorList.filter(item => item.checked).map(item=>item.id)
+    t.setData({selectTags:select})
   },
   choiceStructureColumn(e){
     let data = {
@@ -116,12 +182,7 @@ Page({
     data.scructureIndex[e.detail.column] = e.detail.value;
     this.setData(data);
   },
-  choiceStructureBind(e){
-        app.logger(e.detail.value)
-        this.setData({
-          scructureIndex: e.detail.value
-        })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -137,9 +198,7 @@ Page({
       ColorList:ColorList
     })
    },
-  onLoad: function (options) {
-    this.__init()
-  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

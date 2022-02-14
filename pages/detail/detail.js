@@ -1,6 +1,7 @@
 // pages/detail/detail.js
 const app = getApp();
 import scrollGood from '../template/scroll-good/scroll-good.js'
+import { getGoodsDetail,getRecommendList } from '../../utils/api'
 Page({
 
   /**
@@ -36,6 +37,7 @@ Page({
       type: 'image',
       url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg'
     }],
+    goods:{},
     ColorList: app.globalData.ColorList,
   },
 
@@ -45,6 +47,28 @@ Page({
   chickGood:function (params) {
     scrollGood.chickGood(params)
   },
+  /**
+   * 根据id获取商品
+   */
+  async getGoodsDetailData(id){
+    const { code, data} = await getGoodsDetail({
+      id
+    })
+    if(code!==200){
+      return
+    }
+    this.setData({goods:data})
+  },
+  /**
+   * 推荐商品 getRecommendList
+   */
+  async getRecommendListData(){
+    const { code, data} = await getRecommendList()
+    if(code!==200){
+      return
+    }
+    this.setData({recommendList:data.list})
+  },
   aboutUser(){
     wx.navigateTo({
       url: '../aboutUser/aboutUser',
@@ -52,11 +76,29 @@ Page({
   },
   onLoad: function (options) {
     let t=this;
+    const {goodsId} = options
+    this.getGoodsDetailData(goodsId);
+    this.getRecommendListData()
+    console.log(goodsId);
     // const componentSwiper=t.selectComponent("#component-swiper")
     // componentSwiper.init(t.data.swiperList)
     // app.logger(app.globalData)
     // app.logger(app.globalData.ColorList)
   },
+      // 打电话
+    callPhone(e){
+      const {phone} = e.currentTarget.dataset
+      console.log(phone);
+      if(phone){
+        wx.makePhoneCall({
+          phoneNumber: phone //仅为示例，并非真实的电话号码
+        })
+      }else{
+        console.log('没有电话号码');
+        utils.toast.error('没有电话号码')
+
+      }
+    },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

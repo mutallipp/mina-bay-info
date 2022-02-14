@@ -13,7 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.logger(options)
+    console.log(options);
   },
 
   /**
@@ -29,8 +29,9 @@ Page({
   onShow: function () {
     if (typeof this.getTabBar === 'function' &&
     this.getTabBar()) {
+      
     this.getTabBar().setData({
-      selected: 4 //当前选中的tab索引，设置选中状态
+      selected: 2 //当前选中的tab索引，设置选中状态
     })
   }
   },

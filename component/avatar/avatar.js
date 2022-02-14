@@ -1,5 +1,6 @@
 // pages/component/avatar/avatar.js
 const app=getApp(),pageCommonBehavior = require('../page-common-behavior');
+const utlis = require('../../utils/util')
 Component({
   /**
    * 组件的属性列表
@@ -67,6 +68,9 @@ Component({
         userInfo: e.detail.userInfo,
         hasUserInfo: true
       })
+    },
+    setting(e){
+      utlis.toast.none('功能还没开放')
     }
   }
 })

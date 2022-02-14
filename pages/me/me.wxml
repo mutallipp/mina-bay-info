@@ -2,45 +2,41 @@
 <cu-custom bgColor="bg-gradual-blue" isBack="true">
   <view slot="content">我的</view>
   <view slot="backText">返回</view>
-  
+
 </cu-custom>
 
 <component-avatar bgColor="pink" who="me"></component-avatar>
 
-<view class="cu-card dynamic bg-white radius margin" style="position:fixed; top:230px; width:90%;">
-  <view class="padding-lr padding-top text-lg text-bold">我的交易</view>
-  <view class="cu-list flex justify-between text-black  padding text-center" >
+<view class="cu-card dynamic bg-white radius margin" style="position:fixed; top:180px; width:90%;">
+  <!-- <view class="padding-lr padding-top text-lg text-bold">我的交易</view>
+  <view class="cu-list flex justify-between text-black  padding text-center">
     <view class="cu-chat ">
       <text class="text-bold text-xxl">5</text>
       <text>我发布的</text>
     </view>
     <view class="cu-chat">
-      <text class="text-bold text-xxl" >7</text>
+      <text class="text-bold text-xxl">7</text>
       <text>我收藏的</text>
     </view>
     <view class="cu-chat">
-      <text class="text-bold text-xxl" >12</text>
+      <text class="text-bold text-xxl">12</text>
       <text>我关注的</text>
     </view>
     <view class="cu-chat">
-      <text class="text-bold text-xxl" >18</text>
+      <text class="text-bold text-xxl">18</text>
       <text>回复信息</text>
     </view>
-  </view>
-</view>
+  </view> -->
 
-<view class="bg-white padding" style="margin-top:80px;">
-  <text class="text-lg text-bold padding-lr">推荐工具</text>
-  <view class="cu-list grid col-4">
-    <view class="cu-item">
-      <view class="text-xxl ">
-        <view class="cuIcon-service text-blue"></view>
+  <view class="bg-white padding">
+    <text class="text-lg text-bold padding-lr padding-top">推荐工具</text>
+    <view class="cu-list grid col-4">
+      <view class="cu-item">
+        <view class="text-xxl ">
+          <view class="cuIcon-service text-blue"></view>
+        </view>
+        <text class="text-black">客服中心</text>
       </view>
-      <text class="text-black">客服中心</text>
     </view>
-    
-      
   </view>
-
-
 </view>

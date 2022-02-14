@@ -1,0 +1,11 @@
+<!--component/search/search.wxml-->
+<view class="cu-bar search bg-white fixed" style="top:{{customBar}}px;">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text-center" placeholder="搜索文章，标题，类目" confirm-type="search"></input>
+  </view>
+  <view class="action">
+    <button class="cu-btn bg-green shadow-blur round">搜索</button>
+  </view>
+</view>
+<view class="" style="margin-top:{{customBar+10}}px;"></view>

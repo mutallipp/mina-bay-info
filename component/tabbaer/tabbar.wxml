@@ -1,25 +1,21 @@
 <!--pages/component/tabbaer/tabbar.wxml-->
 
   <view class="cu-bar bg-white tabbar border shop" style="position:fixed;bottom:0;width:100%;">
-    <button class="action bg-white" open-type="contact">
-      <view class="cuIcon-share ">
-        <!-- <view class="cu-tag badge"></view> -->
-      </view> 客服
+    <button class="action bg-white" open-type="share" bindtap="share">
+      <view class="cuIcon-share "></view> 分享
     </button>
-    <view class="action">
-      <view class="cuIcon-like">
-        <!-- <view class="cu-tag badge">99</view> -->
-      </view>
-      购物车
+    <view class="action" bindtap="like">
+      <view class="cuIcon-like"></view>收藏
+      
     </view>
     <view class="btn-group">
-      <button class="cu-btn bg-orange round shadow-blur">
+      <button class="cu-btn bg-orange round shadow-blur" bindtap="contact">
         <view class=" text-xxl">
           <text class="cuIcon-weixin"></text>
         </view>
         <text class="margin-left">联系</text>
       </button>
-      <button class="cu-btn bg-red round shadow-blur">
+      <button class="cu-btn bg-red round shadow-blur" bindtap="callPhone">
         <view class=" text-xxl">
           <text class="cuIcon-phone"></text>
         </view>

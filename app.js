@@ -1,5 +1,6 @@
 //app.js
 import { login } from 'utils/api.js'
+import { setStorageAsync,getStorage } from 'utils/index'
 App({
   onLaunch: function() {
     // 展示本地存储能力
@@ -8,11 +9,11 @@ App({
     wx.setStorageSync('logs', logs)
 
     // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
+    // this.userLogin()
+    // login().then(res=>{
+    //   this.globalData.isLogin = true;
+    // })
+    // this.globalData.isLogin = getToken()
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -50,33 +51,34 @@ App({
         }
       }
     })
-    this.userLogin()
   },
-  userLogin:function(){
-    wx.login({
-      success (res) {
-        console.log(res);
-        if (res.code) {
-          //发起网络请求
-          login(res.code)
-          // wx.request({
-          //   url: 'https://example.com/onLogin',
-          //   data: {
-          //     code: res.code
-          //   }
-          // })
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
+  userLogin: async function(){
+    let token = await getStorage('token');
+    if (token){
+      // 本地里存在token就没必要登陆了
+      return
+    }else{
+      const {code, data,msg } = await login();
+      if (code !==200){
+        console.log('登陆失败',msg);
+        return
       }
-    })
-  },
-  logger:function(...velue){
+      console.log('data',data);
+      token = `${data.tokenHead} ${data.token}`
+    }
+    this.globalData.token = token
+    setStorageAsync('token',token)
     
-    console.log(...velue)
   },
+
   globalData: {
     userInfo: null,
+    token:'',
+    isLogin:new Promise((resolve,reject)=>{
+      login().then(res=>{
+        resolve(true)
+      })
+    }),
     ColorList: [{
       title: '嫣红',
       name: 'red',
@@ -152,7 +154,39 @@ App({
       name: 'white',
       color: '#ffffff'
     },
-    ]
+    ],
+    taBarList:[
+      {
+        "pagePath": "/pages/index/index",
+        "text": "首页",
+        "iconPath": "/image/tabbar-icon/unhome.png",
+        "selectedIconPath": "/image/tabbar-icon/home.png"
+      },
+      // {
+      //   "pagePath": "/pages/like/like",
+      //   "text": "收藏",
+      //   "iconPath": "/image/tabbar-icon/unlike.png",
+      //   "selectedIconPath": "/image/tabbar-icon/like.png"
+      // },
+      {
+        "pagePath": "/pages/updata/updata",
+        "text": "发布",
+        "iconPath": "/image/tabbar-icon/unupdata.png",
+        "selectedIconPath": "/image/tabbar-icon/updata.png"
+      },
+      // {
+      //   "pagePath": "/pages/msg/msg",
+      //   "text": "消息",
+      //   "iconPath": "/image/tabbar-icon/unchat.png",
+      //   "selectedIconPath": "/image/tabbar-icon/chat.png"
+      // },
+      {
+        "pagePath": "/pages/me/me",
+        "text": "我的",
+        "iconPath": "/image/tabbar-icon/unme.png",
+        "selectedIconPath": "/image/tabbar-icon/me.png"
+      }
+    ],
   },
 
 })

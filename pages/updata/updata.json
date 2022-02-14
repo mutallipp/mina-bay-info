@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "component-good-bar":"../../component/good-bar/good-bar"
+    "component-good-bar":"../../component/good-bar/good-bar",
+    "m-modal":"../../component/m-modal/m-modal"
+
   }
 }
